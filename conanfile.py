@@ -326,7 +326,8 @@ class FFMpegConan(ConanFile):
             args.extend(['--disable-cuda', '--disable-cuvid'])
 
             for ecf in str(self.options.extra_config_flags).split(' '):
-                args.append(ecf)
+                if (len(ecf) > 0):
+                    args.append(ecf)
 
             env_build = AutoToolsBuildEnvironment(self, win_bash=self._is_mingw_windows or self._is_msvc)
             # ffmpeg's configure is not actually from autotools, so it doesn't understand standard options like
