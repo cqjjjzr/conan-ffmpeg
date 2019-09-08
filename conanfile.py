@@ -325,7 +325,8 @@ class FFMpegConan(ConanFile):
             # FIXME disable CUDA and CUVID by default, revisit later
             args.extend(['--disable-cuda', '--disable-cuvid'])
 
-            args.append(str(self.options.extra_config_flags))
+            for ecf in str(self.options.extra_config_flags).split(' '):
+                args.append(ecf)
 
             env_build = AutoToolsBuildEnvironment(self, win_bash=self._is_mingw_windows or self._is_msvc)
             # ffmpeg's configure is not actually from autotools, so it doesn't understand standard options like
