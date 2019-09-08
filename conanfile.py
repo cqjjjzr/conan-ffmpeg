@@ -52,7 +52,8 @@ class FFMpegConan(ConanFile):
                "audiotoolbox": [True, False],
                "videotoolbox": [True, False],
                "securetransport": [True, False],
-               "qsv": [True, False]}
+               "qsv": [True, False],
+               "extra_config_flags": "ANY"}
     default_options = {'shared': False,
                        'fPIC': True,
                        'postproc': True,
@@ -85,7 +86,8 @@ class FFMpegConan(ConanFile):
                        'audiotoolbox': True,
                        'videotoolbox': True,
                        'securetransport': False,  # conflicts with OpenSSL
-                       'qsv': True}
+                       'qsv': True,
+                       "extra_config_flags": ""}
     generators = "pkg_config"
     _source_subfolder = "source_subfolder"
 
@@ -322,6 +324,8 @@ class FFMpegConan(ConanFile):
 
             # FIXME disable CUDA and CUVID by default, revisit later
             args.extend(['--disable-cuda', '--disable-cuvid'])
+
+            args.append(str(self.options.extra_config_flags))
 
             env_build = AutoToolsBuildEnvironment(self, win_bash=self._is_mingw_windows or self._is_msvc)
             # ffmpeg's configure is not actually from autotools, so it doesn't understand standard options like
