@@ -131,8 +131,7 @@ class FFMpegConan(ConanFile):
     def build_requirements(self):
         self.build_requires("yasm_installer/1.3.0@bincrafters/stable")
         if tools.os_info.is_windows:
-            if "CONAN_BASH_PATH" not in os.environ:
-                self.build_requires("msys2_installer/latest@bincrafters/stable")
+            self.build_requires("msys2_installer/latest@bincrafters/stable")
 
     def requirements(self):
         if self.options.zlib:
