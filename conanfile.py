@@ -222,7 +222,7 @@ class FFMpegConan(ConanFile):
                                   '#define X264_API_IMPORTS 1', '')
         if self.options.openssl:
             # https://trac.ffmpeg.org/ticket/5675
-            openssl_libraries = ' '.join(['-l%s' % lib for lib in self.deps_cpp_info["OpenSSL"].libs])
+            openssl_libraries = ' '.join(['-l%s' % lib for lib in self.deps_cpp_info["openssl"].libs])
             tools.replace_in_file(os.path.join(self._source_subfolder, 'configure'),
                                   'check_lib openssl openssl/ssl.h SSL_library_init -lssl -lcrypto -lws2_32 -lgdi32 ||',
                                   'check_lib openssl openssl/ssl.h OPENSSL_init_ssl %s || ' % openssl_libraries)
@@ -238,7 +238,7 @@ class FFMpegConan(ConanFile):
             if os.path.exists("freetype.pc"):
                 shutil.move("freetype.pc", "freetype2.pc")
         if self.options.openjpeg:
-            if os.path.exists("openjpeg.pc"):
+            if os.path.exists("OpenJPEG.pc"):
                 shutil.move("OpenJPEG.pc", "libopenjp2.pc")
             if os.path.exists("openjpeg.pc"):
                 shutil.move("openjpeg.pc", "libopenjp2.pc")
