@@ -146,6 +146,7 @@ class FFMpegConan(ConanFile):
             self.requires.add("freetype/2.10.0@bincrafters/stable")
         if self.options.openjpeg:
             self.requires.add("openjpeg/2.3.1@bincrafters/stable")
+            self.requires.add("libpng/1.6.37")
         if self.options.openh264:
             self.requires.add("openh264/1.7.0@bincrafters/stable")
         if self.options.vorbis:
