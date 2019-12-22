@@ -234,15 +234,20 @@ class FFMpegConan(ConanFile):
     def build_configure(self):
         # FIXME : once component feature is out, should be unnecessary
         if self.options.freetype:
-            shutil.move("freetype.pc", "freetype2.pc")
+            if os.path.exists("freetype.pc"):
+                shutil.move("freetype.pc", "freetype2.pc")
         if self.options.openjpeg:
-            shutil.move("openjpeg.pc", "libopenjp2.pc")
+            if os.path.exists("openjpeg.pc"):
+                shutil.move("openjpeg.pc", "libopenjp2.pc")
         if self.options.x264:
-            shutil.move("libx264.pc", "x264.pc")
+            if os.path.exists("libx264.pc"):
+                shutil.move("libx264.pc", "x264.pc")
         if self.options.x265:
-            shutil.move("libx265.pc", "x265.pc")
+            if os.path.exists("libx265.pc"):
+                shutil.move("libx265.pc", "x265.pc")
         if self.options.fdk_aac:
-            shutil.move("libfdk_aac.pc", "fdk-aac.pc")
+            if os.path.exists("libfdk_aac.pc"):
+                shutil.move("libfdk_aac.pc", "fdk-aac.pc")
         if self.options.webp:
             self._copy_pkg_config('libwebp')  # components: libwebpmux
         if self.options.vorbis:
