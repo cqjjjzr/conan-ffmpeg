@@ -135,15 +135,15 @@ class FFMpegConan(ConanFile):
 
     def requirements(self):
         if self.options.zlib:
-            self.requires.add("zlib/1.2.11@conan/stable")
+            self.requires.add("zlib/1.2.11")
         if self.options.bzlib:
-            self.requires.add("bzip2/1.0.8@conan/stable")
+            self.requires.add("bzip2/1.0.8")
         if self.options.lzma:
             self.requires.add("lzma/5.2.4@bincrafters/stable")
         if self.options.iconv:
-            self.requires.add("libiconv/1.15@bincrafters/stable")
+            self.requires.add("libiconv/1.15")
         if self.options.freetype:
-            self.requires.add("freetype/2.10.0@bincrafters/stable")
+            self.requires.add("freetype/2.10.1")
         if self.options.openjpeg:
             self.requires.add("openjpeg/2.3.1")
             self.requires.add("libpng/1.6.37")
@@ -168,9 +168,9 @@ class FFMpegConan(ConanFile):
         if self.options.fdk_aac:
             self.requires.add("libfdk_aac/2.0.0@bincrafters/stable")
         if self.options.webp:
-            self.requires.add("libwebp/1.0.3@bincrafters/stable")
+            self.requires.add("libwebp/1.0.3")
         if self.options.openssl:
-            self.requires.add("OpenSSL/1.1.1c@conan/stable")
+            self.requires.add("openssl/1.1.1c")
         if self.settings.os == "Windows":
             if self.options.qsv:
                 self.requires.add("intel_media_sdk/2018R2_1@bincrafters/stable")
