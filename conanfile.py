@@ -145,7 +145,7 @@ class FFMpegConan(ConanFile):
         if self.options.freetype:
             self.requires.add("freetype/2.10.0@bincrafters/stable")
         if self.options.openjpeg:
-            self.requires.add("openjpeg/2.3.1@bincrafters/stable")
+            self.requires.add("openjpeg/2.3.1")
             self.requires.add("libpng/1.6.37")
         if self.options.openh264:
             self.requires.add("openh264/1.7.0@bincrafters/stable")
@@ -238,6 +238,8 @@ class FFMpegConan(ConanFile):
             if os.path.exists("freetype.pc"):
                 shutil.move("freetype.pc", "freetype2.pc")
         if self.options.openjpeg:
+            if os.path.exists("openjpeg.pc"):
+                shutil.move("OpenJPEG.pc", "libopenjp2.pc")
             if os.path.exists("openjpeg.pc"):
                 shutil.move("openjpeg.pc", "libopenjp2.pc")
         if self.options.x264:
